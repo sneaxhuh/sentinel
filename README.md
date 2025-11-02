@@ -1,80 +1,91 @@
-# 🏗 Scaffold-ETH 2
+# Sentinel 
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+![Sentinel Architecture](https://github.com/user-attachments/assets/9f872e33-3233-4f3f-91c6-28ce6b3cb165)
+---
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+## Introduction
 
-⚙️ Built using NextJS, RainbowKit, Foundry, Wagmi, Viem, and Typescript.
+**Sentinel** is a blockchain-backed platform that makes open-source collaboration **trustless, fair, and secure**. It combines a **two-sided staking protocol** (for both repository owners and issue solvers) with **verifiable AI agents** and **Polkadot zk-based user verification** to eliminate collusion, overruns, Sybil attacks, and identity fraud.
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+**Deployed on:** Polkadot’s **Moonbase parachain**
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+This ensures predictable incentives, protected contributors (especially new developers), and verified AI assistance — all enforced through smart contracts and on-chain identity proofs.
 
-## Requirements
+---
 
-Before you begin, you need to install the following tools:
+## The Problem
 
-- [Node (>= v20.18.3)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+* **Collusion and code appropriation:** Maintainers may view PRs and reuse code without merging or rewarding contributors.
+* **Incentive misalignment:** Experienced developers can unintentionally overrun newcomers’ PRs, leading to unfair outcomes.
+* **Centralized trust dependency:** Platforms like Gitcoin depend on manual fund releases by maintainers.
+* **Fake accounts and Sybil attacks:** Multiple identities distort fairness and reward distribution.
+* **Unverified human contribution:** Without verified identities, human participation cannot be proven.
 
-## Quickstart
+---
 
-To get started with Scaffold-ETH 2, follow the steps below:
+## High-Level Solution
 
-1. Install dependencies if it was skipped in CLI:
+Sentinel enforces fairness and transparency through:
 
-```
-cd my-dapp-example
-yarn install
-```
+1. **Two-Sided Staking** — Both owners and solvers lock tokens; stakes are returned or slashed based on verified outcomes.
+2. **Smart Contract ↔ GitHub API Reconciliation** — Each issue corresponds to a contract struct synchronized with GitHub metadata, detecting off-platform merges or policy violations.
+3. **Verifiable AI Agents** — Auditable AI models assist in PR review and code evaluation. Their actions and reputations are tracked on-chain.
 
-2. Run a local network in the first terminal:
+---
 
-```
-yarn chain
-```
+## How Staking Works
 
-This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/foundry/foundry.toml`.
+### Why Project Owners Stake
 
-3. On a second terminal, deploy the test contract:
+* **Prevent collusion or copying:** Owners cannot bypass contributor PRs without losing their stake.
+* **Prevent unauthorized merges:** Only assigned contributors’ PRs can be merged; mismatches trigger slashing.
+* **Align incentives:** Owners are economically motivated to follow Sentinel's workflow, ensuring fairness.
 
-```
-yarn deploy
-```
+### Why Solvers (Contributors) Stake
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script` to deploy the contract to the network. You can also customize the deploy script.
+* **Sybil resistance:** Staking deters spam and fake registrations.
+* **Exclusive assignment:** Stakers gain exclusive rights and deadlines to resolve issues.
+* **Beginner protection:** Unstaked overruns are excluded from rewards, ensuring fair opportunity.
+* **Verified identity:** zk-based verification proves genuine human participation.
 
-4. On a third terminal, start your NextJS app:
+---
 
-```
-yarn start
-```
+## Release and Slashing Rules
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+* Each issue is a smart contract struct containing metadata and state.
+* Owner stakes are released only when all associated issues are resolved and validated.
+* Off-platform actions, unauthorized merges, or violations lead to slashing or redistribution of stakes.
 
-Run smart contract test with `yarn foundry:test`
+---
 
-- Edit your smart contracts in `packages/foundry/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/foundry/script`
+## Verifiable AI Layer
 
+* **Auditable computation:** AI agents generate outputs backed by verifiable proofs.
+* **Reputation system:** Agent performance and trust metrics are stored on-chain, influencing task selection.
+* **Collaborative review:** Multiple AI agents analyze PRs collectively to produce verifiable recommendations.
 
-## Documentation
+---
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+## Why Sentinel Is Better Than Traditional Platforms
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+* **Automated fairness:** Smart contracts handle reward release without manual intervention.
+* **Beginner protection:** Deadline-based staking ensures fair competition.
+* **Verified human contribution:** zk-based identity proofs confirm authenticity.
+* **Sybil and DoS resistance:** Contributor staking and nullifier checks prevent abuse.
+* **Transparent AI:** All AI decisions are auditable and verifiable on-chain.
 
-## Contributing to Scaffold-ETH 2
+---
 
-We welcome contributions to Scaffold-ETH 2!
+## Tech Stack
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+* **Blockchain:** Polkadot’s **Moonbase parachain** (staking, issue management, reward distribution).
+* **Identity Layer:** Polkadot zk-based verification using nullifiers and privacy-preserving proofs.
+* **AI Agents:** Distributed verifiable agents for code analysis, PR evaluation, and trust scoring.
+* **GitHub Integration:** Smart contract state continuously reconciled with GitHub issue and PR data.
+
+---
+
+## Summary
+
+Sentinel brings **trustless accountability** to open-source collaboration through a hybrid of **staking, verifiable AI**. By ensuring that every contribution is genuine, auditable, and economically aligned, Sentinel restores transparency, fairness, and trust to the open-source ecosystem.
+

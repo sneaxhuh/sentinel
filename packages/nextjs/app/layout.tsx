@@ -1,24 +1,37 @@
-import "@rainbow-me/rainbowkit/styles.css";
-import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
-import { ThemeProvider } from "~~/components/ThemeProvider";
-import "~~/styles/globals.css";
-import { getMetadata } from "~~/utils/scaffold-eth/getMetadata";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { Navbar } from "@/components/navbars/navbar";
+import "./globals.css";
+import ClientProviders from "@/app/providers/ClientProviders";
 
-export const metadata = getMetadata({
-  title: "Scaffold-ETH 2 App",
-  description: "Built with 🏗 Scaffold-ETH 2",
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: 'swap',
 });
 
-const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
+// Note: GT Alpina font will be loaded via CSS @font-face rules in globals.css
+
+export const metadata: Metadata = {
+  title: "Sentinel - Celo Development Platform",
+  description: "Build the future on 0g with our comprehensive development platform",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html suppressHydrationWarning className={``}>
-      <body>
-        <ThemeProvider enableSystem>
-          <ScaffoldEthAppWithProviders>{children}</ScaffoldEthAppWithProviders>
-        </ThemeProvider>
+    <html lang="en">
+      <body
+        className={`${inter.variable} font-gt-alpina bg-gypsum text-onyx antialiased`}
+      >
+        <ClientProviders>
+          <Navbar />
+          {children}
+        </ClientProviders>
       </body>
     </html>
   );
-};
-
-export default ScaffoldEthApp;
+}

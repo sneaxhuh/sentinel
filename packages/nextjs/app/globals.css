@@ -1,0 +1,283 @@
+/* Font Imports - Must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Custom UpheavalPro Font */
+@font-face {
+  font-family: 'UpheavalPro';
+  src: url('/UpheavalPro_Regular-s.p.49bd9335.otf') format('opentype'),
+       url('/UpheavalPro_Regular-s.p.49bd9335.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply UpheavalPro as default for cyberpunk elements */
+.font-upheaval {
+  font-family: 'UpheavalPro', 'Courier New', monospace !important;
+}
+
+/* GT Alpina Font Family - Premium serif from Grilli Type Foundry */
+/* Note: Replace these with actual GT Alpina font files when licensed */
+
+/* GT Alpina font declarations - using fallbacks until actual fonts are added */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0px; /* Brutalist design - no rounded corners */
+  
+  /* Celo Color Palette */
+  --celo-prosperity-yellow: #FCFF52;
+  --celo-forest: #476520;
+  --celo-gypsum: #FCF6F1;
+  --celo-sand: #E7E3D4;
+  --celo-wood: #655947;
+  --celo-fig: #1E002B;
+  --celo-snow: #FFFFFF;
+  --celo-onyx: #000000;
+  --celo-success: #329F3B;
+  --celo-error: #E70532;
+  --celo-disabled: #9B9B9B;
+  --celo-sky: #7CC0FF;
+  --celo-citrus: #FF9A51;
+  --celo-jade: #56DF7C;
+  --celo-lavender: #B490FF;
+  --celo-lotus: #FFA3EB;
+  
+  /* Design System Tokens */
+  --background: var(--celo-gypsum);
+  --foreground: var(--celo-onyx);
+  --card: var(--celo-snow);
+  --card-foreground: var(--celo-onyx);
+  --popover: var(--celo-snow);
+  --popover-foreground: var(--celo-onyx);
+  --primary: var(--celo-prosperity-yellow);
+  --primary-foreground: var(--celo-onyx);
+  --secondary: var(--celo-forest);
+  --secondary-foreground: var(--celo-snow);
+  --muted: var(--celo-sand);
+  --muted-foreground: var(--celo-wood);
+  --accent: var(--celo-sky);
+  --accent-foreground: var(--celo-onyx);
+  --destructive: var(--celo-error);
+  --border: var(--celo-onyx);
+  --input: var(--celo-snow);
+  --ring: var(--celo-onyx);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: hsl(240 5.9% 10%);
+  --sidebar-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-primary: hsl(224.3 76.3% 48%);
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(240 3.7% 15.9%);
+  --sidebar-accent-foreground: hsl(240 4.8% 95.9%);
+  --sidebar-border: hsl(240 3.7% 15.9%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+}
+
+/* Celo Typography Hierarchy */
+.celo-heading-1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 3.75rem; /* 60px */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--celo-onyx);
+}
+
+.celo-heading-2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 3rem; /* 48px */
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--celo-onyx);
+}
+
+.celo-heading-3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 2.25rem; /* 36px */
+  line-height: 1.3;
+  color: var(--celo-onyx);
+}
+
+.celo-heading-4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.875rem; /* 30px */
+  line-height: 1.3;
+  color: var(--celo-onyx);
+}
+
+.celo-heading-5 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.4;
+  color: var(--celo-onyx);
+}
+
+.celo-body-large {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.6;
+  color: var(--celo-onyx);
+}
+
+.celo-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 1rem; /* 16px */
+  line-height: 1.6;
+  color: var(--celo-onyx);
+}
+
+.celo-body-small {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.5;
+  color: var(--celo-wood);
+}
+
+.celo-caption {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.4;
+  color: var(--celo-wood);
+}
+
+.celo-label {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.4;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--celo-onyx);
+}
+
+/* Thin weight variations for special use cases */
+.celo-display-thin {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 4rem; /* 64px */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--celo-onyx);
+}
+
+.celo-display-thin-italic {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 4rem; /* 64px */
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--celo-onyx);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+    outline-offset: 2px;
+  }
+  
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: 'GT Alpina', 'Inter', system-ui, sans-serif;
+  }
+}
+
+/* Display Font Class */
+.font-display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-style: normal;
+}

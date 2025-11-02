@@ -1,0 +1,20 @@
+// Deploying 
+
+IronJam11 contracts (main) % forge script script/Deploy.s.sol:DeployDecentralizedIssueTracker \
+  --rpc-url celo \                            
+  --broadcast \                                                
+  --verify \                                              
+  --verifier blockscout \
+  --verifier-url https://celo-sepolia.blockscout.com/api \
+  -vvvv 
+
+
+// Verify 
+
+forge verify-contract \ 
+0x431Fb2E732D863934d49ae1e2799E802a9a18e2b \ 
+alizedIssueTracker.sol:DecentralizedIssueTracker \ 
+--rpc-url https://forno.celo-sepolia.celo-testnet.org/ \ 
+--verifier blockscout \ --verifier-url https://celo-sepolia.blockscout.com/api \ 
+--constructor-args "0x000000000000000000000000000000000000dead" \ 
+-vvvv
